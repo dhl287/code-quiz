@@ -1,22 +1,26 @@
 var startBtn = document.querySelector("#start-quiz");
 
 // Add event listener to generate button
-startBtn.addEventListener("click", writePassword);
+startBtn.addEventListener("click", startQuiz);
 
-// Write password to the #password input
-function writePassword() {
-  var truePrompts = createPrompts(true);
-  var passwordText = document.querySelector("#password");
+function startQuiz() {
+  document.getElementsByClassName("wrapper").hidden = true;
+  document.getElementsByClassName("question-one").hidden = false;
+}
 
-  if(truePrompts) {
-  var password = generatePassword();
-  passwordText.value = password;
-  } else {
-    passwordText.value = "";
-  }
+var questionOneArr = ["A", "B", "C", "D"];
+
+function answerQuestions() {
+  if (questionOneArr !== "A") {
+  timer - 5 seconds
+} else {
+  document.getElementsByClassName("question-one").hidden = true;
+  document.getElementsByClassName("question-two").hidden = false;
 }
   
-function generatePassword() {
+  
+  
+  
   var password = "";
   for(var i = 0; i < confirmLength; i++) {
     var randomPassword = Math.floor(Math.random() * choice.length);
