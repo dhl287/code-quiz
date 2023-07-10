@@ -32,12 +32,12 @@ var questions = [
 ]
 
 
+startBtn.addEventListener("click", ()=>{
+  introPage.getElementsByClassName.display = "none";
+  quizPage.getElementsByClassName.display = "show";
+})
 
-function startQuiz() {
-  firstPage.setAttribute("class", "hide");
-  quizPage.setAttribute("class", "show");
-  showQuestion();
-}
+
 
 function showQuestion() {
   var currentQuestion = questions[currentQuestionIndex];
