@@ -23,7 +23,7 @@ var questions = [
 
 var startBtn = document.querySelector("#start-quiz");
 var endBtn = document.querySelector("#end-quiz");
-var firstPage = document.querySelector(".first-page");
+var firstPage = document.querySelector(".intro-page");
 var quizPage = document.querySelector(".last-page");
 var highScorePage = document.querySelector();
 var initialsEl = document.querySelector();
