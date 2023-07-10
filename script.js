@@ -1,3 +1,13 @@
+var startBtn = document.querySelector("#start-quiz");
+var introPage = document.querySelector(".inner-container");
+var quizPage = document.querySelector(".quiz-section");
+var highScorePage = document.querySelector(highscores-screen);
+var initialsEl = document.querySelector();
+
+var questionsEl = document.querySelector("#question");
+var choicesEl = document.querySelector("#choices");
+
+
 var questions = [
   {
     title: "Which item is a string?",
@@ -21,15 +31,7 @@ var questions = [
   }
 ]
 
-var startBtn = document.querySelector("#start-quiz");
-var endBtn = document.querySelector("#end-quiz");
-var firstPage = document.querySelector(".intro-page");
-var quizPage = document.querySelector(".last-page");
-var highScorePage = document.querySelector();
-var initialsEl = document.querySelector();
 
-var questionsEl = document.querySelector("#question");
-var choicesEl = document.querySelector("#choices");
 
 function startQuiz() {
   firstPage.setAttribute("class", "hide");
