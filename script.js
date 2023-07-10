@@ -1,14 +1,7 @@
-  // 1. need to create prompts (prompt the user)
-  //  a. password length (8 - 128 characters)
-  //  b. lowercase, uppercase, number, symbol
-  // 2. validate input, at least one character type is selected
-  // 3. show generated password
-
-// Assignment Code
-var generateBtn = document.querySelector("#generate");
+var startBtn = document.querySelector("#start-quiz");
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+startBtn.addEventListener("click", writePassword);
 
 // Write password to the #password input
 function writePassword() {
