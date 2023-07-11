@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: monospace;
 }
 
 .outer-container {
@@ -22,8 +23,7 @@
 }
 
 body {
-  font-family: monospace;
-  background-color: #f9fbfd;
+background-color: rgb(144, 197, 197);
 }
 
 .inner-container {
@@ -32,78 +32,67 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+
 }
 
-.intro-header {
+#intro-header {
   text-align: center;
-  padding: 50px;
-  color: rgb(96, 15, 15);
-  font-size: 20px;
+  padding: 20px;
+  color: white;
+  font-weight: bold;
+  font-size: 40px;
 }
 
-.inner-container p {
-  font-size: 15px;
-  display: flex;
-  justify-content: center;
+#guide {
   text-align: center;
 }
 
-.intro-footer {
+#start-btn {
+margin-top: 8%;
+font-size: 20px;
+padding: 10px 20px;
+background-color: rgb(197, 55, 55);
+color: white;
+cursor: pointer;
+}
+
+.inside-inner {
+  border-color: white;
+  border-style: dashed;
+  margin: auto;
+  padding: 30px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
 }
 
-main {
-  display: block;
+.question {
+font-size: 20px;
+  color: black;
+margin-bottom: 20px;
 }
 
-.quiz-section {
-  display: none;
+.options {
+font-size: 15px;
+  color: black;
+display: inline;
+margin-top: 10px;
+margin-bottom: 20px;
+top: 40%;
+left: 40%;
 }
 
-.btn {
+#submit-btn {
+margin-top: 8%;
+font-size: 20px;
+padding: 10px 20px;
+background-color: rgb(197, 55, 55);
+color: white;
+cursor: pointer;
+}
+
+#last-page {
+font-size: 20px;
+color: black;
   border: none;
-  background-color:  rgb(96, 15, 15);
-  border-radius: 10px;
-  color: hsl(0, 0%, 100%);
-  display: inline-block;
-  font-size: 20px;
-  line-height: 22px;
-  margin: 16px 16px 16px 20px;
-  padding: 14px 34px;
-  text-align: center;
-  cursor: pointer;
-}
-
-button[disabled] {
-  cursor: default;
-  background: #c0c7cf;
-}
-
-.last-page {
-  display: none;
-}
-
-.highscores-screen {
-  display: block;
-}
-
-.highscore-screen ol {
-  overflow: scroll;
-  max-height: 200px;
-}
-
-@media (max-width: 690px) {
-  .btn {
-    font-size: 1rem;
-    margin: 16px 0px 0px 0px;
-    padding: 10px 15px;
-  }
-
-}
-
-@media (max-width: 500px) {
-  .btn {
-    font-size: 0.8rem;
-  }
 }

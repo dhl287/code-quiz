@@ -7,66 +7,37 @@
     <title>Coding Quiz</title>
     <link rel="stylesheet" href="style.css" />
   </head>
- 
-  <body>
-    <div class ="outer-container">
-    <h3 id="high-score"><a href="https://placehold.co/800?text=Coming+Soon&font=roboto">High Scores</a></h3>
+
+<body>
+	<div class ="outer-container">
+        <h3 id="high-score"><a href="https://placehold.co/800?text=Coming+Soon&font=roboto">High Scores</a></h3>
+        
+        <h3 id="timer">Timer: 00:00 </h3>
+        </div>
     
-    <h3 id="timer">Timer: 00:00 </h3>
-    </div>
-
     <div class="inner-container">
-      <header class ="intro-header">
-        <h1>Coding Quiz</h1>
-      </header>
-          <p>Take this timed coding quiz!<br> 
-            If you select the wrong answer, you will be deducted 10 seconds. Good luck!</p><br>
+		<header id="intro-header">Coding Quiz</header>
+        <p id="guide">Take this timed coding quiz!<br><br>
+            If you select the wrong answer, you will be deducted 10 seconds.<br><br>
+            Good luck!</p><br>
+            <button onclick="start()" id="start-btn"> Start </button>
+		<div class="inside-inner" id="question-box">
+            <div class="question" id="question">
+            </div>
+		    <div class="options" id="options"> 
+            </div>
+		<button onclick="checkAnswer()" id="submit-btn"> SUBMIT </button>
+        
+		<div id="last-page">
+            <div id="initials">
+            <label for="">Enter Initials:  
+            </label>
+            <input type="text" placeholder="ABC">
         </div>
-        <div class ="intro-footer"> 
-        <button id="start-quiz" class="btn">Start</button>
-        </div>
-      </div>
     </div>
+		<script src="script.js"></script>
+	</div>
 
-    <main>
-      <section class ="quiz-section">
-      <h2>Question Here</h2>
-        <ul>
-          <li><button>Answer 1</button></li>
-          <li><button>Answer 1</button></li>
-          <li><button>Answer 1</button></li>
-          <li><button>Answer 1</button></li>
-        </ul>
-      </section>
- 
-  
-    <!-- saving this for later
-      <button id="end-quiz" class="btn">Submit</button>
-      -->
+</body>
 
-    <div class="last-page">
-      <h2>You have finished the quiz!</h2>
-      <p>Your Score: 00</p>
-      <div>
-        <label for="">Enter Initials:</label>
-        <input type="text">
-        <button>Submit</button>
-      </div>
-    </div>
-
-    <section class="highscores-screen">
-      <h2>Highscores:</h2>
-      <ol>
-        <li>score</li>
-        <li>score</li>
-        <li>score</li>
-        <li>score</li>
-      </ol>
-
-
-    </section>
-   
-
-    <script src="script.js"></script>
-  </body>
 </html>

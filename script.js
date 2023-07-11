@@ -1,66 +1,114 @@
-var startBtn = document.querySelector("#start-quiz");
-var introPage = document.querySelector(".inner-container");
-var quizPage = document.querySelector(".quiz-section");
-var highScorePage = document.querySelector(highscores-screen);
-var initialsEl = document.querySelector();
-
-var questionsEl = document.querySelector("#question");
-var choicesEl = document.querySelector("#choices");
-
-
-var questions = [
-  {
-    title: "Which item is a string?",
-    choices: ["Larry", "14", "true", "None of the Above"],
-    answer: "Larry"
+var showQuestion = [
+  document.getElementById("question-box").style.display = "none"];
+  
+  function start() {
+      document.getElementById("guide").hidden = true;
+      document.getElementById("start-btn").hidden = true;
+      showQuestion = [document.getElementById("question-box").style.display = "block"];
+   }
+  
+  
+  // List of Questions
+  var Questions = [{
+    question: "Which item is a string?",
+    answer: [
+      { text: "Larry", isCorrect: true },
+    { text: "true", isCorrect: false },
+    { text: "None of the Above", isCorrect: false }
+    ]
+  
   },
   {
-    title: "Which item is a boolean?",
-    choices: ["14", "Larry", "true", "None of the Above"],
-    answer: "true"
+    question: "Which item is a boolean?",
+    answer: [
+      { text: "14", isCorrect: false },
+    { text: "true", isCorrect: true },
+    { text: "None of the Above", isCorrect: false }
+    ]
+  
   },
   {
-    title: "Which file will take me to the HTML code?",
-    choices: ["style.css", "script.js", "index.html", "reset.css"],
-    answer: "index.html"
-  },
-  {
-    title: "An array is a special variable, which can hold more than one value: True or False?",
-    choices: ["true", "false"],
-    answer: "true"
+    question: "An array is a special variable, which can hold more than one value: True or False?",
+    answer: [
+      { text: "True", isCorrect: true },
+    { text: "False", isCorrect: false },
+    { text: "None of the Above", isCorrect: false }
+    ]
+  
   }
-]
-
-
-startBtn.addEventListener("click", ()=>{
-  introPage.getElementsByClassName.display = "none";
-  quizPage.getElementsByClassName.display = "show";
-})
-
-
-
-function showQuestion() {
-  var currentQuestion = questions[currentQuestionIndex];
-  var titleEl = document.getElementById("question-title");
-  titleEl.textContent = currentQuestion.title;
-  choicesEl.innerHTML = "";
-
-  currentQuestion.choices.forEach(function(choice, i) {
-    var choiceBtn = document.createElement("button");
-    choiceBtn.setAttribute("class", "choice");
-    choiceBtn.setAttribute("value", choice);
-
-    choiceBtn.textContent = i + 1 + ". " + choice;
-
-    choiceBtn.onclick = questionClick;
-
-    choicesEl.appendChild(choiceBtn);
-
-  })
-}
-
-function questionClick () {
-  if (this.value !== questions[currentQuestionIndex].answer)
-}
-
-
+  
+  ]
+  
+  var currentQuestion = 0
+  var score = 0
+  
+  function nextQuestion() {
+    var question = document.getElementById("question")
+    var options = document.getElementById("options")
+  
+    question.textContent = Questions[currentQuestion].question;
+    options.innerHTML = ""
+  
+    for (let i = 0; i < Questions[currentQuestion].answer.length; i++) {
+      var choicesdiv = document.createElement("div");
+      var choice = document.createElement("input");
+      var choiceLabel = document.createElement("label");
+  
+      choice.type = "radio";
+      choice.name = "answer";
+      choice.value = i;
+  
+      choiceLabel.textContent = Questions[currentQuestion].answer[i].text;
+  
+      choicesdiv.appendChild(choice);
+      choicesdiv.appendChild(choiceLabel);
+      options.appendChild(choicesdiv);
+    }
+  }
+  
+  nextQuestion();
+  
+  
+  function newQuestion() {
+    if (currentQuestion < Questions.length - 1) {
+      currentQuestion++;
+      nextQuestion();
+    } else {
+      document.getElementById("options").remove()
+      document.getElementById("question").remove()
+      document.getElementById("submit-btn").remove()
+      showScore();
+    }
+  }
+  
+  var needInitials = [
+      document.getElementById("last-page").style.display = "none"
+  ];
+      
+  function showScore() {
+      var totalScore = document.getElementById("last-page")
+      totalScore.textContent = `You scored ${score} out of ${Questions.length}`
+      needInitials = [document.getElementById("last-page").style.display = "block"];
+      }
+  
+  
+          
+  function checkHighScores() {
+      document.getElementById("last-page").hidden = true;
+      removeLastPage = [document.getElementById("question-box").style.display = "block"];
+  }
+  
+  
+  
+  function checkAnswer() {
+    var selectedAnswer = parseInt(document.querySelector('input[name="answer"]:checked').value);
+  
+    if (Questions[currentQuestion].answer[selectedAnswer].isCorrect) {
+      score++;
+      console.log("Correct")
+      newQuestion();
+    } else {
+      newQuestion();
+    }
+  }
+  
