@@ -1,17 +1,22 @@
 var showQuestion = [
   document.getElementById("question-box").style.display = "none"];
 
-  function start() {
+var timerEl = document.getElementById("timer");
+    
+var secondsLeft = 60;
+
+function start() {
     document.getElementById("guide").hidden = true;
     document.getElementById("start-btn").hidden = true;
     showQuestion = [document.getElementById("question-box").style.display = "block"];
  }
 
+
+ // start();
+
+
+
  // var startBtn = document.getElementById("start-btn");
-   
-  // var timerEl = document.getElementById("timer");
-    
-  // var secondsLeft = 60;
   
   // startBtn.addEventListener("click", function() {
     // var timerInterval = setInterval(function () {
@@ -106,15 +111,13 @@ var showQuestion = [
       showScore();
     }
   }
-  
+
   function showScore() {
     var totalScore = document.getElementById("last-page")
     totalScore.textContent = `You scored ${score} out of ${Questions.length}`
     initials = [document.getElementById("last-page").style.display = "block"]
   }
 
-  
-  
   
   function checkAnswer() {
     var selectedAnswer = parseInt(document.querySelector('input[name="answer"]:checked').value);
@@ -124,6 +127,7 @@ var showQuestion = [
       console.log("Correct")
       newQuestion();
     } else {
+      // add function to deduct 10 seconds
       newQuestion();
     }
   }
