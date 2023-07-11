@@ -1,12 +1,39 @@
 var showQuestion = [
   document.getElementById("question-box").style.display = "none"];
-  
+
   function start() {
-      document.getElementById("guide").hidden = true;
-      document.getElementById("start-btn").hidden = true;
-      showQuestion = [document.getElementById("question-box").style.display = "block"];
-   }
+    document.getElementById("guide").hidden = true;
+    document.getElementById("start-btn").hidden = true;
+    showQuestion = [document.getElementById("question-box").style.display = "block"];
+ }
+
+ // var startBtn = document.getElementById("start-btn");
+   
+  // var timerEl = document.getElementById("timer");
+    
+  // var secondsLeft = 60;
   
+  // startBtn.addEventListener("click", function() {
+    // var timerInterval = setInterval(function () {
+      // secondsLeft--;
+      // timerEl.textContent = secondsLeft + " seconds left";
+      // showQuestion = [document.getElementById("question-box").style.display = "block"];
+  
+     // if(secondsLeft === 0) {
+      //  clearInterval(timerInterval);
+        //sendMessage();
+     // }
+    //}, 1000);
+  //});
+  
+  ////function sendMessage() {
+    // timerEl.textContent = "Game Over";
+  
+  //}
+  
+  //setTime();
+
+
   
   // List of Questions
   var Questions = [{
@@ -36,7 +63,7 @@ var showQuestion = [
     ]
   
   }
-  
+
   ]
   
   var currentQuestion = 0
@@ -68,7 +95,6 @@ var showQuestion = [
   
   nextQuestion();
   
-  
   function newQuestion() {
     if (currentQuestion < Questions.length - 1) {
       currentQuestion++;
@@ -81,22 +107,12 @@ var showQuestion = [
     }
   }
   
-  var needInitials = [
-      document.getElementById("last-page").style.display = "none"
-  ];
-      
   function showScore() {
-      var totalScore = document.getElementById("last-page")
-      totalScore.textContent = `You scored ${score} out of ${Questions.length}`
-      needInitials = [document.getElementById("last-page").style.display = "block"];
-      }
-  
-  
-          
-  function checkHighScores() {
-      document.getElementById("last-page").hidden = true;
-      removeLastPage = [document.getElementById("question-box").style.display = "block"];
+    var totalScore = document.getElementById("last-page")
+    totalScore.textContent = `You scored ${score} out of ${Questions.length}`
+    initials = [document.getElementById("last-page").style.display = "block"]
   }
+
   
   
   
@@ -111,4 +127,3 @@ var showQuestion = [
       newQuestion();
     }
   }
-  
