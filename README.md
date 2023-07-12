@@ -1,4 +1,4 @@
-# Password-Generator-Random
+# Code-Quiz
 
 ## Description
 
