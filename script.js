@@ -9,6 +9,8 @@ function start() {
     document.getElementById("guide").hidden = true;
     document.getElementById("start-btn").hidden = true;
     showQuestion = [document.getElementById("question-box").style.display = "block"];
+    
+  
  }
 
 
@@ -112,10 +114,14 @@ function start() {
     }
   }
 
+var initials = [
+  document.getElementById("initials").style.display = "none"
+];
+
   function showScore() {
     var totalScore = document.getElementById("last-page")
     totalScore.textContent = `You scored ${score} out of ${Questions.length}`
-    initials = [document.getElementById("last-page").style.display = "block"]
+    initials = [document.getElementById("initials").style.display = "block"]
   }
 
   
