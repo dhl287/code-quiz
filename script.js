@@ -1,5 +1,6 @@
-var showQuestion = [
-  document.getElementById("question-box").style.display = "none"];
+var showQuestion = 
+  document.getElementById("question-box");
+  showQuestion.style.display = "none";
 
 var timerEl = document.getElementById("timer");
     
@@ -8,7 +9,7 @@ var secondsLeft = 60;
 function start() {
     document.getElementById("guide").hidden = true;
     document.getElementById("start-btn").hidden = true;
-    showQuestion = [document.getElementById("question-box").style.display = "block"];
+    showQuestion.style.display = "block";
     
   
  }
@@ -114,14 +115,14 @@ function start() {
     }
   }
 
-var initials = [
-  document.getElementById("initials").style.display = "none"
-];
+var initials = 
+  document.getElementById("initials");
+  initials.style.display = "none";
 
   function showScore() {
     var totalScore = document.getElementById("last-page")
     totalScore.textContent = `You scored ${score} out of ${Questions.length}`
-    initials = [document.getElementById("initials").style.display = "block"]
+    initials.style.display = "block";
   }
 
   
@@ -136,4 +137,8 @@ var initials = [
       // add function to deduct 10 seconds
       newQuestion();
     }
+  }
+
+  function endQuiz () {
+
   }
