@@ -6,13 +6,15 @@ var timerEl = document.getElementById("timer");
     
 var secondsLeft = 60;
 
+var timerInterval;
+
 function start() {
     document.getElementById("guide").hidden = true;
     document.getElementById("start-btn").hidden = true;
     showQuestion.style.display = "block";
     
     // timer starts after start-btn is clicked
-    var timerInterval = setInterval(function () {
+    timerInterval = setInterval(function () {
       secondsLeft--;
       timerEl.textContent = secondsLeft + " seconds left";
   
@@ -118,20 +120,31 @@ var initials =
     } else {
       // add function to deduct 10 seconds
       newQuestion();
+      secondsLeft = secondsLeft - 10;
     }
   }
 
-var InitialsPortal = document.getElementById("save-btn");
+var InitialsText = document.getElementById("initalInput");
 var InitialsStorage = {
-  score: score.value,
-  InitialsPortal: InitialsPortal.value.trim()}
+  score: score,
+  InitialsText: InitialsText.value}
   
-  function submitInitials(event) {
-    event.preventDefault();
+  function submitInitials() {
     localStorage.setItem("InitialsStorage", JSON.stringify(InitialsStorage));
-    console.log(InitialsStorage);
+    renderMessage();
     }
 
-  // function endQuiz () {
+
+    function renderMessage() {
+      var scoresList = JSON.parse(localStorage.getItem("InitialsStorage"));
+      if (scoresList !== null) {
+        console.log(InitialsText + " scored " + score + ".");
+      }
+    }
+
+function endQuiz () {
+  clearInterval(timerInterval);
+  timerEl.textContent = "Game Over";
+}
     
    
