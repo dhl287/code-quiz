@@ -15,9 +15,10 @@ Once the quiz has been started, the user will be presented with three questions 
 
 ![image](https://github.com/dhl287/donnalee-code-quiz/assets/133473429/84405e8c-16c0-464d-834b-9890294af38c)
 
-Once the quiz has been completed, the last page will show the user's score and an input field to add their initials. The score is logged in the console, but I was unable to figure out how to log the user's initials in the console or in local storage. Ideally, the initials for anyone who saves their initials should be saved in the local storage (setItem()), and these initials should then be shown on the High Scores Page (getItem()). 
+Once the quiz has been completed, the last page will show the user's score and an input field to add their initials. The score is logged in the console, but I was unable to figure out how to log the user's initials in the console or in local storage. The if/else statement added in the submitInitials() function is only triggering an alert asking for the initials to be between 2-3 characters. Ideally, the initials for anyone who saves their initials should be saved in the local storage (setItem()), and these initials should then be shown on the High Scores Page (getItem()). 
 
 ![image](https://github.com/dhl287/donnalee-code-quiz/assets/133473429/e051e033-6ec2-43da-bdc7-850636833660)
+![image](https://github.com/dhl287/donnalee-code-quiz/assets/133473429/ac2a336e-ae30-4b1f-a89a-94ed7168067b)
 
 The challenge has been deployed, but not all criteria was met. 
 
