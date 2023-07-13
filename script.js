@@ -16,7 +16,7 @@ function start() {
     // timer starts after start-btn is clicked
     timerInterval = setInterval(function () {
       secondsLeft--;
-      timerEl.textContent = secondsLeft + " seconds left";
+      timerEl.textContent = "Timer: " + secondsLeft + " seconds left";
   
       if(secondsLeft === 0) {
       clearInterval(timerInterval);
@@ -27,28 +27,28 @@ function start() {
 
   
   // List of Questions
-  var Questions = [{
-    question: "Which item is a string?",
-    answer: [
-      { text: "Larry", isCorrect: true },
+var Questions = [{
+  question: "Which item is a string?",
+  answer: [
+    { text: "Larry", isCorrect: true },
     { text: "true", isCorrect: false },
     { text: "None of the Above", isCorrect: false }
     ]
   
   },
   {
-    question: "Which item is a boolean?",
-    answer: [
-      { text: "14", isCorrect: false },
+  question: "Which item is a boolean?",
+  answer: [
+    { text: "14", isCorrect: false },
     { text: "true", isCorrect: true },
     { text: "None of the Above", isCorrect: false }
     ]
   
   },
   {
-    question: "An array is a special variable, which can hold more than one value: True or False?",
-    answer: [
-      { text: "True", isCorrect: true },
+  question: "An array is a special variable, which can hold more than one value: True or False?",
+  answer: [
+    { text: "True", isCorrect: true },
     { text: "False", isCorrect: false },
     { text: "None of the Above", isCorrect: false }
     ]
@@ -57,90 +57,98 @@ function start() {
 
   ]
   
-  var currentQuestion = 0
-  var score = 0
+var currentQuestion = 0
+var score = 0
   
-  function nextQuestion() {
-    var question = document.getElementById("question")
-    var options = document.getElementById("options")
+function nextQuestion() {
+  var question = document.getElementById("question")
+  var options = document.getElementById("options")
   
-    question.textContent = Questions[currentQuestion].question;
-    options.innerHTML = ""
+  question.textContent = Questions[currentQuestion].question;
+  options.innerHTML = ""
   
-    for (let i = 0; i < Questions[currentQuestion].answer.length; i++) {
-      var choicesdiv = document.createElement("div");
-      var choice = document.createElement("input");
-      var choiceLabel = document.createElement("label");
+  for (let i = 0; i < Questions[currentQuestion].answer.length; i++) {
+    var choicesdiv = document.createElement("div");
+    var choice = document.createElement("input");
+    var choiceLabel = document.createElement("label");
   
-      choice.type = "radio";
-      choice.name = "answer";
-      choice.value = i;
+    choice.type = "radio";
+    choice.name = "answer";
+    choice.value = i;
   
-      choiceLabel.textContent = Questions[currentQuestion].answer[i].text;
+    choiceLabel.textContent = Questions[currentQuestion].answer[i].text;
   
-      choicesdiv.appendChild(choice);
-      choicesdiv.appendChild(choiceLabel);
-      options.appendChild(choicesdiv);
+    choicesdiv.appendChild(choice);
+    choicesdiv.appendChild(choiceLabel);
+    options.appendChild(choicesdiv);
     }
   }
   
   nextQuestion();
   
-  function newQuestion() {
-    if (currentQuestion < Questions.length - 1) {
-      currentQuestion++;
-      nextQuestion();
+function newQuestion() {
+  if (currentQuestion < Questions.length - 1) {
+    currentQuestion++;
+    nextQuestion();
     } else {
-      document.getElementById("options").remove()
-      document.getElementById("question").remove()
-      document.getElementById("submit-btn").remove()
-      showScore();
+    document.getElementById("options").remove()
+    document.getElementById("question").remove()
+    document.getElementById("submit-btn").remove()
+    showScore();
     }
   }
 
-var initials = 
+var lastPage = 
   document.getElementById("initials");
-  initials.style.display = "none";
+  lastPage.style.display = "none";
 
-  function showScore() {
-    var totalScore = document.getElementById("last-page")
-    totalScore.textContent = `You scored ${score} out of ${Questions.length}`
-    initials.style.display = "block";
+function showScore() {
+  var totalScore = document.getElementById("last-page")
+  totalScore.textContent = `You scored ${score} out of ${Questions.length}`
+  lastPage.style.display = "block";
+  score = 1 + score;
+  localStorage.setItem("score", score);
+  console.log(Questions)
+  if (Questions < 3) {
+    nextQuestion();
+  } else {
     endQuiz();
   }
+}
 
+function checkAnswer() {
+  var selectedAnswer = parseInt(document.querySelector('input[name="answer"]:checked').value);
   
-  function checkAnswer() {
-    var selectedAnswer = parseInt(document.querySelector('input[name="answer"]:checked').value);
-  
-    if (Questions[currentQuestion].answer[selectedAnswer].isCorrect) {
-      score++;
-      console.log("Correct")
-      newQuestion();
+  if (Questions[currentQuestion].answer[selectedAnswer].isCorrect) {
+    score++;
+    console.log("Correct")
+    newQuestion();
     } else {
-      // add function to deduct 10 seconds
-      newQuestion();
-      secondsLeft = secondsLeft - 10;
-    }
+    // added process to deduct 10 seconds
+    newQuestion();
+    secondsLeft = secondsLeft - 10;
   }
+}
 
-var InitialsText = document.getElementById("initialInput");
-var InitialsStorage = {
-  score: score,
-  InitialsText: InitialsText};
+var InitialsText = document.getElementById("initialInput").value;
   
-  function submitInitials() {
-    localStorage.setItem("InitialsStorage", JSON.stringify(InitialsStorage));
-    renderMessage();
-    }
+function submitInitials() {
+  InitialsText = "";
+  if (InitialsText.length == 2 || InitialsText.length == 3) {
+    console.log(InitialsText.value + " scored " + score + ".");
+    window.localStorage.setItem("InitialsText", InitialsText);
+  } else {
+    window.alert("Initials need to be 2-3 characters long.")
+  };
 
+}
 
-    function renderMessage() {
-      var scoresList = JSON.parse(localStorage.getItem("InitialsStorage"));
-      if (scoresList !== null) {
-        console.log(InitialsText + " scored " + score + ".");
-      }
+function renderMessage() {
+  var scoresList = JSON.parse(localStorage.getItem("InitialsStorage"));
+  if (scoresList !== null) {
+    console.log(InitialsText + " scored " + score + ".");
     }
+}
 
 function endQuiz () {
   clearInterval(timerInterval);
