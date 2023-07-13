@@ -124,10 +124,10 @@ var initials =
     }
   }
 
-var InitialsText = document.getElementById("initalInput");
+var InitialsText = document.getElementById("initialInput");
 var InitialsStorage = {
   score: score,
-  InitialsText: InitialsText.value}
+  InitialsText: InitialsText};
   
   function submitInitials() {
     localStorage.setItem("InitialsStorage", JSON.stringify(InitialsStorage));
