@@ -11,36 +11,17 @@ function start() {
     document.getElementById("start-btn").hidden = true;
     showQuestion.style.display = "block";
     
+    // timer starts after start-btn is clicked
+    var timerInterval = setInterval(function () {
+      secondsLeft--;
+      timerEl.textContent = secondsLeft + " seconds left";
   
- }
-
-
- // start();
-
-
-
- // var startBtn = document.getElementById("start-btn");
-  
-  // startBtn.addEventListener("click", function() {
-    // var timerInterval = setInterval(function () {
-      // secondsLeft--;
-      // timerEl.textContent = secondsLeft + " seconds left";
-      // showQuestion = [document.getElementById("question-box").style.display = "block"];
-  
-     // if(secondsLeft === 0) {
-      //  clearInterval(timerInterval);
-        //sendMessage();
-     // }
-    //}, 1000);
-  //});
-  
-  ////function sendMessage() {
-    // timerEl.textContent = "Game Over";
-  
-  //}
-  
-  //setTime();
-
+      if(secondsLeft === 0) {
+      clearInterval(timerInterval);
+      timerEl.textContent = "Game Over";
+     }
+    }, 1000);
+  };
 
   
   // List of Questions
@@ -123,6 +104,7 @@ var initials =
     var totalScore = document.getElementById("last-page")
     totalScore.textContent = `You scored ${score} out of ${Questions.length}`
     initials.style.display = "block";
+    endQuiz();
   }
 
   
@@ -139,6 +121,17 @@ var initials =
     }
   }
 
-  function endQuiz () {
+var InitialsPortal = document.getElementById("save-btn");
+var InitialsStorage = {
+  score: score.value,
+  InitialsPortal: InitialsPortal.value.trim()}
+  
+  function submitInitials(event) {
+    event.preventDefault();
+    localStorage.setItem("InitialsStorage", JSON.stringify(InitialsStorage));
+    console.log(InitialsStorage);
+    }
 
-  }
+  // function endQuiz () {
+    
+   
